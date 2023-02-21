@@ -41,4 +41,4 @@ async def on_message(message):
   if any(word in msg for word in sad_words):
     await message.channel.send(random.choice(starter_encouragements))
 keep_alive()
-client.run(os.getenv('TOKEN'))  # #'MTA3NzE0NTk1NTczODA3MTA2MA.G9Fn4X.KuLyCVg34kijK4rGqys9mWd8Pmi8TVA1lIGvLo'
+client.run(os.getenv('TOKEN'))  
