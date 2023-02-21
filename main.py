@@ -69,4 +69,4 @@ async def on_message(message):
     await message.channel.send(response.choices[0].text)
     
 keep_alive()
-client.run(os.getenv('DISCORD_TOKEN'))  # #'MTA3NzE0NTk1NTczODA3MTA2MA.GD2rpA.5S_yKWGf5fDNxtM9LlVJxttpNeN71dPZkl5UMs'
+client.run(os.getenv('DISCORD_TOKEN'))  # 
