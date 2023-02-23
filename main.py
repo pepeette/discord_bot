@@ -27,7 +27,9 @@ starter_encouragements = [
   "Hang in there.",
   "You are a great person!"
 ]
-prompt= "cheer me up"
+
+news = 'news'
+
 def get_quote():
   response = requests.get("https://zenquotes.io/api/random")
   json_data = json.loads(response.text)
@@ -46,27 +48,29 @@ async def on_message(message):
 
   msg = message.content
 
-  if msg.startswith('$inspire'):
+  if msg.startswith('motiv'):
     quote = get_quote()
     await message.channel.send(quote)
     
   if any(word in msg for word in sad_words):
     await message.channel.send(random.choice(starter_encouragements))
     
-  # Mention the client user
-  if prompt in message.content: #client.user in message.mentions:  
+  if msg.startswith('#'):  
     response = openai.Completion.create(
-    engine="text-davinci-002",
-    prompt=prompt,  #f"{message.content}",
-    max_tokens=150,
-    temperature=0.8,
-    top_p=1,
-    frequency_penalty=0,
-    presence_penalty=0.3,
-    stop=["\n"]
+    engine= 'text-davinci-001',  #'davinci-codex', #"text-davinci-002", #"davinci-codex-123"
+    prompt=msg,  #f"{message.content}", prompt="context:" + context + "\n\n" + "prompt:" + prompt
+    max_tokens=200,
+    #temperature=0.7,
+    # top_p=1,
+    # frequency_penalty=0,
+    # presence_penalty=0.3,
+    #stop=["\n"]
     )
     # Send the response as a message
-    await message.channel.send(response.choices[0].text)
+    await message.channel.send(response["choices"][0]["text"] + "\n")
     
+  if news in msg:
+      await message.channel.send('https://www.scratchmonkeys.com')
+   
 keep_alive()
 client.run(os.getenv('DISCORD_TOKEN'))  # 
