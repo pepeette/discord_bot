@@ -9,3 +9,5 @@ https://discord.com/developers/applications/1077145955738071060/oauth2/url-gener
 You also should have an .env file that hosts your 
 DISCORD_TOKEN =''
 OPENAI_KEY = ''
+
+Model updated with gpt-3.5-turbo
