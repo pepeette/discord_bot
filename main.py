@@ -57,7 +57,7 @@ async def on_message(message):
     
   if msg.startswith('#'):  
     response = openai.Completion.create(
-    engine= 'text-davinci-001',  #'davinci-codex', #"text-davinci-002", #"davinci-codex-123", model = 'gpt-3.5-turbo' 
+    engine= 'text-davinci-003',  #'davinci-codex', #"text-davinci-002", #"davinci-codex-123", model = 'gpt-3.5-turbo' 
     prompt=msg,  #f"{message.content}", prompt="context:" + context + "\n\n" + "prompt:" + prompt
     max_tokens=200,
     #temperature=0.7,
